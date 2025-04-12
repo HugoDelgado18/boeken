@@ -3,7 +3,9 @@ package com.boeken.boeken.services;
 import com.boeken.boeken.models.User;
 import com.boeken.boeken.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class UserServiceImpl implements UserService {
 
     private UserRepository userRepository;
@@ -16,6 +18,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User create(User user) {
-        return null;
+        return userRepository.save(user);
     }
 }
