@@ -19,6 +19,8 @@ public class User {
     private String firstName;
     @Column(name = "last_name", nullable = false)
     private String lastName;
+    @Column(name = "username", nullable = false)
+    private String username;
     @Column(name = "phone_number", nullable = false)
     private String phoneNumber;
     @Column(name = "email", nullable = false)
@@ -44,10 +46,11 @@ public class User {
     public User() {
     }
 
-    public User(Long id, String firstName, String lastName, String phoneNumber, String email, String profilePicture, OffsetDateTime createdTimestamp, OffsetDateTime modifiedTimestamp, OffsetDateTime deletedTimestamp, List<BookClub> organizedClubs, List<Membership> memberships, List<ChatMessage> chatMessages) {
+    public User(Long id, String firstName, String lastName, String username, String phoneNumber, String email, String profilePicture, OffsetDateTime createdTimestamp, OffsetDateTime modifiedTimestamp, OffsetDateTime deletedTimestamp, List<BookClub> organizedClubs, List<Membership> memberships, List<ChatMessage> chatMessages) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.username = username;
         this.phoneNumber = phoneNumber;
         this.email = email;
         this.profilePicture = profilePicture;
@@ -81,6 +84,14 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPhoneNumber() {
@@ -159,12 +170,12 @@ public class User {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(phoneNumber, user.phoneNumber) && Objects.equals(email, user.email) && Objects.equals(profilePicture, user.profilePicture) && Objects.equals(createdTimestamp, user.createdTimestamp) && Objects.equals(modifiedTimestamp, user.modifiedTimestamp) && Objects.equals(deletedTimestamp, user.deletedTimestamp) && Objects.equals(organizedClubs, user.organizedClubs) && Objects.equals(memberships, user.memberships) && Objects.equals(chatMessages, user.chatMessages);
+        return Objects.equals(id, user.id) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(username, user.username) && Objects.equals(phoneNumber, user.phoneNumber) && Objects.equals(email, user.email) && Objects.equals(profilePicture, user.profilePicture) && Objects.equals(createdTimestamp, user.createdTimestamp) && Objects.equals(modifiedTimestamp, user.modifiedTimestamp) && Objects.equals(deletedTimestamp, user.deletedTimestamp) && Objects.equals(organizedClubs, user.organizedClubs) && Objects.equals(memberships, user.memberships) && Objects.equals(chatMessages, user.chatMessages);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, firstName, lastName, phoneNumber, email, profilePicture, createdTimestamp, modifiedTimestamp, deletedTimestamp, organizedClubs, memberships, chatMessages);
+        return Objects.hash(id, firstName, lastName, username, phoneNumber, email, profilePicture, createdTimestamp, modifiedTimestamp, deletedTimestamp, organizedClubs, memberships, chatMessages);
     }
 
     @Override
@@ -173,6 +184,7 @@ public class User {
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", username='" + username + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' +
                 ", email='" + email + '\'' +
                 ", profilePicture='" + profilePicture + '\'' +
